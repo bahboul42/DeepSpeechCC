@@ -28,7 +28,7 @@ More information is available in each section :
 - **Arthur Louis** - a.louis@student.uliege.be
   
 ## Coordinators
-This project is under the supervision of **Ph. Louppe Gilles** and **François Rozet**
+This project is under the supervision of **Prof. Louppe Gilles** and **François Rozet**
 
 ---
 
