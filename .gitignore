@@ -35,6 +35,11 @@ MANIFEST
 # wandb/logs
 wandb/
 
+# model save files
+models/
+*.pkl
+*.pt
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
