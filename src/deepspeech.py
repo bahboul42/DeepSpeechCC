@@ -10,8 +10,8 @@ import torchaudio
 import torchaudio.functional as FA
 import torchaudio.transforms as T
 
-from transformers import GPT2Model, GPT2LMHeadModel, GPT2Config, GPT2Tokenizer, pipeline
-import loralib as lora
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+
 
 # parameters
 n_mels = 80
@@ -203,7 +203,7 @@ class DeepSpeechCC(nn.Module):
     
 class CommonVoiceDataset(torch.utils.data.Dataset):#
 
-    def __init__(self, root_dir, mode='train', transform=None, frac=(0.6, 0.3, 0.1), sample=1.0, _tsv_loc='validated_cleaned.tsv', _pt_loc='melspecs/', _random_seed=42):
+    def __init__(self, root_dir, mode='train', transform=None, frac=(0.6, 0.3, 0.1), sample=1.0, _tsv_loc=f'validated_cleaned.tsv', _pt_loc='/melspecs/', _random_seed=42):
         super().__init__()
         self.root_dir = root_dir
         self.transform = transform
@@ -212,7 +212,7 @@ class CommonVoiceDataset(torch.utils.data.Dataset):#
         self._random_seed = _random_seed
 
         # Load the data
-        self.df = pd.read_csv(self.root_dir + self._tsv_loc, sep='\t').sample(frac=sample, random_state=self._random_seed)
+        self.df = pd.read_csv(self._tsv_loc, sep='\t').sample(frac=sample, random_state=self._random_seed)
 
         self.data = self.df['name'].to_list()
         self.labels = self.df['sentence'].to_list()
